@@ -1,0 +1,17 @@
+<h3>Auth Server</h3>
+
+<ul>
+<li><a href="<%= url_for('edituser', { username = user.username}) %>">Change Password</a></li>
+</ul>
+
+<% if user.admin then %>
+<h3>Users</h3>
+
+<ul>
+<% for _,u in ipairs(users) do %>
+<li><%= u.username %> <a href="<%= url_for('edituser', { username = u.username }) %>">Edit</a> <a href="<%= url_for('deleteuser', { username = u.username }) %>">Delete</a></li>
+<% end %>
+</ul>
+
+<% end %>
+

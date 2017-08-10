@@ -1,0 +1,45 @@
+<% if edituser then %>
+<h3>Editing <%= edituser.username %></h3>
+<% else %>
+<h3>Create user</h3>
+<% end %>
+
+<% if edituser then %>
+<form class="pure-form pure-form-aligned" id="edituser_form" method="post" action="<%= url_for('edituser', { username = edituser.username }) %>">
+<% else %>
+<form class="pure-form pure-form-aligned" id="edituser_form" method="post" action="<%= url_for('edituser') %>">
+<% end %>
+
+<fieldset>
+
+<% if not edituser then %>
+<div class="pure-control-group"><label for="username">Username</label>
+<input type="text" name="username"></div>
+<% end %>
+
+<% if edituser and user.username == edituser.username then %>
+<div class="pure-control-group"><label for="password_cur">Current Password</label>
+<input type="password" name="password_cur"></div>
+<% end %>
+
+<div class="pure-control-group"><label for="password">New Password</label>
+<input type="password" name="password"></div>
+
+<div class="pure-control-group"><label for="password_confirm">Confirm New Password</label>
+<input type="password" name="password_confirm"></div>
+
+<% if user.admin then %>
+<div class="pure-control-group"><label for="change_required">Change password at next login</label>
+<input type="checkbox" name="change_required"<% if edituser then %><%= edituser.change_required and ' checked' or '' %><% end %>></div>
+
+<div class="pure-control-group"><label for="admin">Admin</label>
+<input type="checkbox" name="admin"<% if edituser then %><%= edituser.admin and ' checked' or '' %><% end %>></div>
+<% end %>
+
+<div class="pure-controls">
+<button type="submit" class="pure-button pure-button-primary">Save</button>
+</div>
+
+</fieldset>
+
+</form>

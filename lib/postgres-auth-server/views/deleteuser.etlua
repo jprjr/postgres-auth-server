@@ -1,0 +1,14 @@
+<h3>Deleting <%= edituser.username %></h3>
+<p>This will delete <%= edituser.username %></p>
+
+<form class="pure-form pure-form-aligned" id="deleteuser_form" method="post" action="<%= url_for('deleteuser', { username = edituser.username }) %>">
+
+<fieldset>
+
+<div class="pure-controls">
+<button type="submit" class="pure-button pure-button-primary">Delte User</button>
+</div>
+
+</fieldset>
+
+</form>

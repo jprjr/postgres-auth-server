@@ -1,0 +1,90 @@
+### Postgres connection settings
+### No default
+postgres:
+  host: 127.0.0.1
+  user: psql_auth
+  password: psql_auth
+  database: psql_auth
+
+### whether to log every SQL query and http request
+### Default:
+###   logging:
+###     queries: true
+###     requests: true
+logging:
+  queries: true
+  requests: true
+
+### what session name to store cookies in
+### Default: session_name: 'lapis_session'
+session_name: 'postgres-auth-server'
+
+### secret used to encrypt session data
+### Default: session_name: 'please-change-me'
+secret: 'please-change-me'
+
+### path to the nginx/openresty binary
+### Default: nginx_path: '/opt/openresty/bin/openresty'
+nginx_path: '/opt/openresty/bin/openresty'
+
+### log level
+### Available methods:
+###   debug
+###   info
+###   notice
+###   warn
+###   error
+###   crit
+###   alert
+###   emerg
+### Default: log_level: 'debug'
+log_level: 'debug'
+
+
+### http_listen directive. Some examples:
+###   http_listen: '127.0.0.1:8080'          # listen on loopback port 8080
+###   http_listen: '8080'                    # listen on all ipv4 addresses, port 8080
+###   http_listen: '*:8080'                  # listen on all ipv4 addresses, port 8080
+###   http_listen: '[::]:8080'               # listen on all ipv6 addresses, port 8080
+###   http_listen: '[::]:8080 ipv6only=off'  # listen on all ipv4+ipv6 addresses, port 8080
+### This can also be an array if you need to listen on multiple port + address combos
+### Example
+###   http_listen:
+###     - '127.0.0.1:8080'
+###     - '192.168.5.1:8081'
+###
+### Default: http_listen: '[::]:8080 ipv6only=off'
+http_listen: '[::]:8080 ipv6only=off'
+
+### Uncomment http_prefix if you need this at some url other than '/'
+### Examples:
+###   http_prefix: '/users'
+### Default: http_prefix:  # empty/blank
+# http_prefix:
+
+### Uncomment encryption_method if you need to change the default encryption
+### available methods, from best to worst:
+###   sha512
+###   sha256
+###   ssha
+###   sha
+###   apr1
+###   md5
+### Default: encryption_method: 'sha512'
+# encryption_method: 'sha512'
+
+### static_dir -- set location for static files (js, css, etc)
+### Default: auto-detected
+# static_dir:
+
+### Set the DNS resolver
+### Default: dns_resolver: '8.8.8.8 ipv6=off'
+# dns_resolver: '8.8.8.8 ipv6=off'
+
+### Set the SSL certificate store
+### default: ssl_trusted_certificate: '/etc/ssl/certs/ca-certificates.crt'
+# ssl_trusted_certificate
+
+### Work directory for temporary files, etc
+### Default: $HOME/.postgres-auth-server
+# work_dir:
