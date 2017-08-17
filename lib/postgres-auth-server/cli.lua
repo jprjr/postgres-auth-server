@@ -236,12 +236,29 @@ local functions = {
       change_required = false,
     }
 
-    io.stdout:write('Force password change at next login? ')
+    io.stdout:write('Force password change at next login? [y/N] ')
     local force = io.read()
-    io.stdout:write('\n')
     if lower(sub(force,1,1)) == 'y' then
       ut.change_required = true
     end
+
+    io.stdout:write('Make user an admin? [y/N] ')
+    local admin = io.read()
+    if lower(sub(admin,1,1)) == 'y' then
+      ut.admin = true
+    end
+
+    io.stdout:write('Summary of changes:\n')
+    if not u then
+      io.stdout:write('Creating user ' .. username .. '\n')
+    else
+      io.stdout:write('Updating user ' .. username .. '\n')
+    end
+    local c_string = ut.change_required and 'true' or 'false'
+    local a_string = ut.admin and 'true' or 'false'
+    io.stdout:write('  Password change required: ' .. c_string .. '\n')
+    io.stdout:write('  Administrator: ' .. a_string .. '\n')
+
     if not u then
       u = User:create(ut)
     else
@@ -249,7 +266,7 @@ local functions = {
     end
 
     if not u then
-      io.stdout:write('Failed to update user\n')
+      io.stdout:write('Failed to create/update user\n')
       return 1
     end
 
