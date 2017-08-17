@@ -141,3 +141,6 @@ Launches `postgres-auth-server`
 Attempts to parse the config file and checks for errors. Also tests
 that the postgres credentials are valid.
 
+## LICENSE
+
+MIT (see LICENSE)
