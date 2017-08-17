@@ -78,6 +78,16 @@ specify a lua binary to run with `-l (binary)`, ie:
 
 `./bin/postgres-auth-server -l /opt/openresty/bin/lua`
 
+## Performing authentication
+
+The authentication endpoint for apps/nginx is `/auth`, ie:
+
+* `http://127.0.0.1:8080/auth`
+* `http://192.168.1.50:8080/auth`
+* `http://192.168.1.50:8080/users/auth` -- if setup with `http_prefix: '/users'`
+
+Please look at the `etc/config.yaml.example` file for details on how to configure this.
+
 ## Usage
 
 In any examples, substiute `postgres-auth-server` with
