@@ -139,7 +139,7 @@ local function loadconfig(filename)
     yaml_config.auth_realm = 'default'
   end
 
-  gsub(yaml_config.http_prefix,'/+$','')
+  yaml_config.http_prefix = gsub(yaml_config.http_prefix,'/+$','')
 
   config('default',yaml_config)
 
