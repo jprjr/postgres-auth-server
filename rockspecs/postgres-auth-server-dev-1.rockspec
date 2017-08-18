@@ -11,6 +11,7 @@ dependencies = {
   "lapis",
   "lyaml",
   "luaposix",
+  "luacrypto",
   "lua-crypt",
 }
 
