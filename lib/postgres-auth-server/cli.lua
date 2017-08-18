@@ -198,10 +198,22 @@ local functions = {
     return 0
   end,
 
-  ['add'] = function(username)
-    if not username then
-      return help(1)
+  ['count'] = function()
+    local res = try_load_config()
+    if res ~= 0 then
+      return res
     end
+
+    local User = require'postgres-auth-server.models.user'
+    local users = User:select()
+    if not users then
+      users = {}
+    end
+    print(#users)
+    return 0
+  end,
+
+  ['add'] = function(username)
 
     local res = try_load_config()
     if res ~= 0 then
@@ -210,6 +222,11 @@ local functions = {
 
     require'postgres-auth-server.migrations'
     local User = require'postgres-auth-server.models.user'
+
+    if not username then
+      io.stdout:write('Username: ')
+      username = io.read()
+    end
 
     local u = User:find({ username = username })
     if not u then
