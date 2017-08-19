@@ -43,13 +43,7 @@ http {
     <% end %>
     lua_code_cache on;
 
-    <% if http_prefix:len() > 0 then %>
     location / {
-      return 301 <%= http_prefix %>/;
-    }
-    <% end %>
-
-    location <%= http_prefix %>/ {
       default_type text/html;
       content_by_lua_block {
         require('lapis').serve('postgres-auth-server.webapp')
