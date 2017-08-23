@@ -87,7 +87,7 @@ app:match('edituser', config.http_prefix .. '/user(/:username)', respond_to({
     if not self.user then
       return { redirect_to = self:url_for('login') }
     end
-    if self.user.username ~= lower(self.params.username) and not self.user.admin then
+    if self.params.username and ( self.user.username ~= lower(self.params.username) and not self.user.admin ) then
       return { redirect_to = self:url_for('site-root') }
     end
     if self.params.username then
