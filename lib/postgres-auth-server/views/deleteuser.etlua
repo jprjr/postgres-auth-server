@@ -6,7 +6,7 @@
 <fieldset>
 
 <div class="pure-controls">
-<button type="submit" class="pure-button pure-button-primary">Delte User</button>
+<button type="submit" class="pure-button pure-button-primary">Delete User</button>
 </div>
 
 </fieldset>
